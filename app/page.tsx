@@ -122,7 +122,7 @@ export default function Home() {
         </div>
 
         {/* 3. GRIGLIA PROGETTI */}
-        <section className="space-y-8 mb-24">
+        <section className="space-y-8 mb-20">
           <div className="flex items-center gap-3 border-b border-gray-800 pb-4">
             <div className="w-3 h-6 bg-[#FF6B00] rounded-full"></div>
             <h3 className="text-2xl font-bold tracking-tight text-white">I Miei Progetti</h3>
@@ -172,7 +172,40 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. SEZIONE CONTATTI (Form + Link Email Integrato) */}
+        {/* 4. SEZIONE YOUTUBE (Box grande d'impatto) */}
+        <section className="max-w-4xl mx-auto my-20">
+          <div className="flex items-center gap-3 border-b border-gray-800 pb-4 mb-6">
+            <div className="w-3 h-6 bg-red-600 rounded-full"></div>
+            <h3 className="text-2xl font-bold tracking-tight text-white">Contenuti & Intrattenimento</h3>
+          </div>
+
+          <div className="p-8 rounded-2xl border border-red-600/20 bg-[#140C12] shadow-[0_0_30px_rgba(220,38,38,0.08)] flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300 hover:border-red-600/40">
+            <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+              <div className="w-16 h-16 rounded-2xl bg-red-600 flex items-center justify-center text-white shadow-md shadow-red-600/30 shrink-0">
+                <svg className="w-9 h-9 fill-current" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-white tracking-tight">ProduttivitàAI</h4>
+                <p className="text-gray-400 text-sm mt-1 leading-relaxed">
+                  Ottimizzazione del flusso di lavoro, guide e strategie pratiche per dominare l'ufficio e i software aziendali grazie all'utilizzo dell'Intelligenza Artificiale.
+                </p>
+              </div>
+            </div>
+            
+            <a 
+              href="https://www.youtube.com/@ProduttivitaAI" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-colors text-center w-full md:w-auto shrink-0 shadow-lg shadow-red-600/20 active:scale-[0.98]"
+            >
+              Guarda i Video
+            </a>
+          </div>
+        </section>
+
+        {/* 5. SEZIONE CONTATTI */}
         <section className="max-w-4xl mx-auto space-y-8">
           <div className="flex items-center gap-3 border-b border-gray-800 pb-4">
             <div className="w-3 h-6 bg-[#00D4FF] rounded-full"></div>
@@ -180,7 +213,6 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#0F223D] p-8 rounded-2xl border border-gray-800 shadow-xl">
-            {/* Info a Sinistra */}
             <div className="flex flex-col justify-between space-y-6">
               <div>
                 <h4 className="text-xl font-bold text-[#00D4FF] mb-2">Hai un progetto in mente?</h4>
@@ -189,7 +221,6 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Box Email Cliccabile */}
               <a 
                 href="mailto:screemerssoftware@gmail.com" 
                 className="inline-flex items-center gap-4 p-4 rounded-xl bg-[#0A192F] border border-gray-800 hover:border-[#FF6B00]/60 transition-colors group"
@@ -206,11 +237,9 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Form Integrato a Destra */}
             <form 
-              action="https://formspree.io/f/{{INSERISCI_IL_TUO_ID_QUI}}" // Sostituisci opzionalmente con l'ID Formspree, oppure lascialo mailto compilato
+              action="https://formspree.io/f/{{INSERISCI_IL_TUO_ID_QUI}}" 
               onSubmit={(e) => {
-                // Configurazione base veloce se non usi Formspree: apre direttamente il client mail precompilato
                 if (e.currentTarget.action.includes("INSERISCI_IL_TUO_ID")) {
                   e.preventDefault();
                   const target = e.currentTarget as any;
@@ -269,7 +298,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* 5. FOOTER */}
+      {/* 6. FOOTER */}
       <footer className="mt-20 border-t border-gray-800 bg-[#071324] py-8 text-center text-xs font-mono text-gray-500">
         <p>© {new Date().getFullYear()} Screemers Software. Tutti i diritti riservati.</p>
       </footer>
