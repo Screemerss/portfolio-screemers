@@ -97,7 +97,7 @@ const ebooks = [
     prezzo: "GRATIS",
     coverColor: "from-violet-600 to-indigo-900",
     badge: "PROMPT LIST",
-    link: "https://screemers.lemonsqueezy.com/checkout/buy/79f64337-f373-415b-9963-da291a5b5b59?embed=1",
+    link: "/downloads/5-prompt-ai.pdf", // Download diretto dal sito
     features: ["5 prompt pronti", "Ottimizzati per Gemini/ChatGPT", "Copia e incolla rapido"]
   },
   {
@@ -107,7 +107,7 @@ const ebooks = [
     prezzo: "GRATIS",
     coverColor: "from-red-600 to-amber-700",
     badge: "GUIDA VIDEO",
-    link: "https://screemers.lemonsqueezy.com/checkout/buy/ad407c0d-78ef-4d32-abdb-49746a76ca7c?embed=1",
+    link: "/downloads/sistema-shorts-infinito.pdf", // Download diretto dal sito
     features: ["Strategia di ritenzione", "Workflow con tool AI", "Script pronti all'uso"]
   },
   {
@@ -117,7 +117,7 @@ const ebooks = [
     prezzo: "€9.99",
     coverColor: "from-emerald-600 to-teal-900",
     badge: "SOFTWARE",
-    link: "https://screemers.lemonsqueezy.com/checkout/buy/0f7c5691-89e1-423e-97a9-3a708f5a0ddf?embed=1",
+    link: "https://screemers.lemonsqueezy.com/checkout/buy/0f7c5691-89e1-423e-97a9-3a708f5a0ddf?embed=1", // Rimane su Lemon Squeezy (a pagamento)
     features: ["Estrazione B2B illimitata", "File CSV/Excel pronto", "Aggiornamenti gratuiti a vita"]
   }
 ];
@@ -1124,15 +1124,23 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <a 
-                    href={ebook.link}
-                    className="lemonsqueezy-button w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-center bg-gray-950 border border-gray-900 hover:border-[#FF6B00]/40 hover:text-white text-gray-400 transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    {ebook.prezzo === "GRATIS" ? "Scarica Gratis" : `Acquista per ${ebook.prezzo}`}
-                  </a>
+                  {(() => {
+                    const isLemon = ebook.link.includes("lemonsqueezy.com");
+                    return (
+                      <a 
+                        href={ebook.link}
+                        download={!isLemon ? true : undefined}
+                        target={isLemon ? undefined : "_blank"}
+                        rel={isLemon ? undefined : "noopener noreferrer"}
+                        className={`${isLemon ? "lemonsqueezy-button" : ""} w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-center bg-gray-950 border border-gray-900 hover:border-[#FF6B00]/40 hover:text-white text-gray-400 transition-all duration-300 flex items-center justify-center gap-2`}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        {ebook.prezzo === "GRATIS" ? "Scarica Gratis" : `Acquista per ${ebook.prezzo}`}
+                      </a>
+                    );
+                  })()}
                 </div>
               </div>
             ))}
