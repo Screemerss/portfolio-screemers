@@ -1016,7 +1016,7 @@ export default function Home() {
               </div>
               
               <a 
-                href="https://www.youtube.com/@ProduttivitàAI-w2n" 
+                href="https://www.youtube.com/@Produttivit%C3%A0AI-w2n" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-colors text-center w-full shadow-lg shadow-red-600/10 active:scale-[0.98]"
@@ -1171,7 +1171,7 @@ export default function Home() {
           <p>© {new Date().getFullYear()} Screemers Software. Tutti i diritti riservati.</p>
           <div className="flex gap-4">
             <a href="https://github.com/Screemerss" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
-            <a href="https://www.youtube.com/@ProduttivitàAI-w2n" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors">YouTube</a>
+            <a href="https://www.youtube.com/@Produttivit%C3%A0AI-w2n" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors">YouTube</a>
             <a href="mailto:screemerssoftware@gmail.com" className="hover:text-[#00D4FF] transition-colors">Email</a>
           </div>
         </div>
