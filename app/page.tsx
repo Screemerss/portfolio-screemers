@@ -116,6 +116,44 @@ export default function Home() {
   // Stato per notifica di blocco ordine (in modalità sola consultazione)
   const [consultationAlert, setConsultationAlert] = useState<string | null>(null);
 
+  // Stato per il form di contatto
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const FORMSPREE_ID = "IL_TUO_ID_FORMSPREE"; // Inserisci il tuo ID Formspree qui per l'invio in background (es. "xrgovewz")
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const target = e.currentTarget;
+    const nome = (target.elements.namedItem("nome") as HTMLInputElement).value;
+    const email = (target.elements.namedItem("email") as HTMLInputElement).value;
+    const msg = (target.elements.namedItem("messaggio") as HTMLTextAreaElement).value;
+
+    if (!FORMSPREE_ID || FORMSPREE_ID === "IL_TUO_ID_FORMSPREE") {
+      // Fallback a mailto se non configurato
+      window.location.href = `mailto:screemerssoftware@gmail.com?subject=Contatto da Portfolio - ${nome}&body=Mittente: ${email}%0D%0AMessaggio:%0D%0A${msg}`;
+      return;
+    }
+
+    setFormStatus("submitting");
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ name: nome, email: email, message: msg })
+      });
+      if (response.ok) {
+        setFormStatus("success");
+        target.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch (err) {
+      setFormStatus("error");
+    }
+  };
+
   // Filtro progetti
   const progettiFiltrati = progetti.filter(p => 
     categoriaAttiva === "tutti" ? true : p.categoria === categoriaAttiva
@@ -1047,64 +1085,82 @@ export default function Home() {
             </div>
 
             {/* Form invio */}
-            <form 
-              action="https://formspree.io/f/{{INSERISCI_IL_TUO_ID_QUI}}" 
-              onSubmit={(e) => {
-                if (e.currentTarget.action.includes("INSERISCI_IL_TUO_ID")) {
-                  e.preventDefault();
-                  const target = e.target as any;
-                  const nome = target.nome.value;
-                  const email = target.email.value;
-                  const msg = target.messaggio.value;
-                  window.location.href = `mailto:screemerssoftware@gmail.com?subject=Contatto da Portfolio - ${nome}&body=Mittente: ${email}%0D%0AMessaggio:%0D%0A${msg}`;
-                }
-              }}
-              method="POST" 
-              className="space-y-4"
-            >
-              <div>
-                <label className="block text-[10px] font-mono uppercase tracking-wider text-gray-400 mb-1" htmlFor="nome">Nome / Azienda</label>
-                <input 
-                  type="text" 
-                  id="nome" 
-                  name="name" 
-                  required 
-                  className="w-full bg-[#030712] border border-gray-900 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#8A2BE2] transition-colors"
-                  placeholder="Nome o denominazione"
-                />
+            {formStatus === "success" ? (
+              <div className="bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-8 text-center space-y-4 shadow-xl animate-float">
+                <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mx-auto">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-lg font-bold text-white">Messaggio Inviato!</h4>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    Grazie per avermi contattato. Il tuo messaggio è stato ricevuto correttamente. Ti risponderò al più presto all'indirizzo email fornito.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setFormStatus("idle")}
+                  className="py-2.5 px-6 rounded-lg font-bold text-xs uppercase tracking-wider bg-gray-900 border border-gray-850 text-white hover:bg-gray-800 transition-colors"
+                >
+                  Invia un altro messaggio
+                </button>
               </div>
-
-              <div>
-                <label className="block text-[10px] font-mono uppercase tracking-wider text-gray-400 mb-1" htmlFor="email">Email</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  required 
-                  className="w-full bg-[#030712] border border-gray-900 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#8A2BE2] transition-colors"
-                  placeholder="nome@azienda.com"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-mono uppercase tracking-wider text-gray-400 mb-1" htmlFor="messaggio">Messaggio</label>
-                <textarea 
-                  id="messaggio" 
-                  name="message" 
-                  required 
-                  rows={4}
-                  className="w-full bg-[#030712] border border-gray-900 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#8A2BE2] transition-colors resize-none"
-                  placeholder="Descrivi brevemente la tua richiesta..."
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                className="w-full py-3.5 px-6 rounded-lg font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-[#FF6B00] to-[#8A2BE2] text-white hover:opacity-90 transition-opacity active:scale-[0.98] transform duration-100"
+            ) : (
+              <form 
+                onSubmit={handleContactSubmit}
+                className="space-y-4"
               >
-                Invia Richiesta
-              </button>
-            </form>
+                {formStatus === "error" && (
+                  <div className="p-3.5 bg-red-500/10 border border-red-500/20 text-red-400 rounded-lg text-xs font-medium">
+                    ❌ Si è verificato un errore durante l'invio. Riprova più tardi o scrivimi direttamente via email.
+                  </div>
+                )}
+                <div>
+                  <label className="block text-[10px] font-mono uppercase tracking-wider text-gray-400 mb-1" htmlFor="nome">Nome / Azienda</label>
+                  <input 
+                    type="text" 
+                    id="nome" 
+                    name="name" 
+                    required 
+                    className="w-full bg-[#030712] border border-gray-900 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#8A2BE2] transition-colors"
+                    placeholder="Nome o denominazione"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-mono uppercase tracking-wider text-gray-400 mb-1" htmlFor="email">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    className="w-full bg-[#030712] border border-gray-900 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#8A2BE2] transition-colors"
+                    placeholder="nome@azienda.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-mono uppercase tracking-wider text-gray-400 mb-1" htmlFor="messaggio">Messaggio</label>
+                  <textarea 
+                    id="messaggio" 
+                    name="message" 
+                    required 
+                    rows={4}
+                    className="w-full bg-[#030712] border border-gray-900 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#8A2BE2] transition-colors resize-none"
+                    placeholder="Descrivi brevemente la tua richiesta..."
+                  />
+                </div>
+
+                <button 
+                  type="submit" 
+                  disabled={formStatus === "submitting"}
+                  className="w-full py-3.5 px-6 rounded-lg font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-[#FF6B00] to-[#8A2BE2] text-white hover:opacity-90 transition-opacity active:scale-[0.98] transform duration-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {formStatus === "submitting" ? "Invio in corso..." : "Invia Richiesta"}
+                </button>
+              </form>
+            )}
           </div>
         </section>
       </main>
