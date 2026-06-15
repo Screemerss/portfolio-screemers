@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Script from "next/script";
 
 // Progetti reali mappati direttamente dai repository GitHub
 const progetti = [
@@ -91,23 +92,33 @@ const progetti = [
 const ebooks = [
   {
     id: 1,
-    titolo: "Dominare la Produttività con l'IA",
-    descrizione: "Una guida pratica con oltre 50 prompt pronti all'uso per Gemini e ChatGPT. Impara ad automatizzare la scrittura di email, report e brainstorming d'idee.",
+    titolo: "5 Prompt AI per Risparmiare 10 Ore a Settimana",
+    descrizione: "Ottimizza il tuo lavoro quotidiano. 5 prompt pratici e testati per delegare compiti ripetitivi all'Intelligenza Artificiale.",
     prezzo: "GRATIS",
     coverColor: "from-violet-600 to-indigo-900",
-    badge: "GUIDA AI",
-    link: "https://screemerss.lemonsqueezy.com/", // Sostituisci con il link reale del checkout a 0$
-    features: ["+50 Prompt Copia-Incolla", "Formati PDF & EPUB", "Aggiornamenti gratuiti"]
+    badge: "PROMPT LIST",
+    link: "https://screemers.lemonsqueezy.com/checkout/buy/79f64337-f373-415b-9963-da291a5b5b59?embed=1",
+    features: ["5 prompt pronti", "Ottimizzati per Gemini/ChatGPT", "Copia e incolla rapido"]
   },
   {
     id: 2,
-    titolo: "Guida all'Automazione per Sviluppatori",
-    descrizione: "Come creare script di automazione desktop per risparmiare ore di lavoro quotidiano (gestione file, scraper web e utility di sistema).",
+    titolo: "Il Sistema Shorts Infinito",
+    descrizione: "La guida strategica per creare e programmare flussi continui di video brevi (Shorts e Reels) ottimizzati con strumenti IA.",
     prezzo: "GRATIS",
-    coverColor: "from-orange-500 to-amber-700",
-    badge: "CODING",
-    link: "https://screemerss.lemonsqueezy.com/", // Sostituisci con il link reale del checkout a 0$
-    features: ["Codici Sorgente Inclusi", "Scritta in Python & Shell", "Esempi reali passo-passo"]
+    coverColor: "from-red-600 to-amber-700",
+    badge: "GUIDA VIDEO",
+    link: "https://screemers.lemonsqueezy.com/checkout/buy/ad407c0d-78ef-4d32-abdb-49746a76ca7c?embed=1",
+    features: ["Strategia di ritenzione", "Workflow con tool AI", "Script pronti all'uso"]
+  },
+  {
+    id: 3,
+    titolo: "Local LeadScraper",
+    descrizione: "Unlimited B2B Lead Generator. Scraper automatico di contatti locali per estrarre email, telefoni e informazioni aziendali senza limiti d'uso.",
+    prezzo: "€9.99",
+    coverColor: "from-emerald-600 to-teal-900",
+    badge: "SOFTWARE",
+    link: "https://screemers.lemonsqueezy.com/checkout/buy/0f7c5691-89e1-423e-97a9-3a708f5a0ddf?embed=1",
+    features: ["Estrazione B2B illimitata", "File CSV/Excel pronto", "Aggiornamenti gratuiti a vita"]
   }
 ];
 
@@ -251,6 +262,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#030712] text-[#f3f4f6] font-sans antialiased selection:bg-[#FF6B00] selection:text-white relative">
+      <Script src="https://assets.lemonsqueezy.com/lemon.js" defer strategy="afterInteractive" />
       
       {/* Background Glows decorativi */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#8A2BE2]/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-glow"></div>
@@ -1055,29 +1067,29 @@ export default function Home() {
         <section id="risorse" className="py-16 border-t border-gray-900 scroll-mt-24">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-[#FF6B00] bg-[#FF6B00]/10 px-3 py-1 rounded-md">
-              Risorse Gratuite
+              Store & Risorse
             </span>
             <h3 className="text-3xl md:text-5xl font-black mt-4 mb-6 text-white">
-              Ebook & Guide Pratiche
+              Ebook & Risorse Digitali
             </h3>
             <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-              Scarica gratuitamente le mie guide digitali su Lemon Squeezy per ottimizzare la tua produttività personale con l'IA o imparare a scrivere i tuoi primi script di automazione.
+              Scarica le mie guide digitali gratuite o acquista i miei software per automatizzare le tue attività e velocizzare il tuo business.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {ebooks.map((ebook) => (
               <div 
                 key={ebook.id} 
-                className="glass-panel rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:items-stretch gap-6 border border-gray-900 hover:border-[#FF6B00]/30 transition-all duration-300"
+                className="glass-panel rounded-2xl p-6 flex flex-col items-center sm:items-stretch gap-6 border border-gray-900 hover:border-[#FF6B00]/30 transition-all duration-300"
               >
                 {/* Copertina Libro 3D-like in CSS */}
-                <div className={`w-36 h-48 rounded-lg bg-gradient-to-br ${ebook.coverColor} p-4 flex flex-col justify-between shadow-xl shrink-0 relative overflow-hidden group select-none border border-white/10`}>
+                <div className={`w-36 h-48 rounded-lg bg-gradient-to-br ${ebook.coverColor} p-4 flex flex-col justify-between shadow-xl shrink-0 relative overflow-hidden group select-none border border-white/10 mx-auto`}>
                   <div className="absolute top-0 left-0 w-2 h-full bg-black/25 z-10"></div>
                   <span className="text-[8px] font-mono font-bold tracking-widest bg-white/20 text-white px-2 py-0.5 rounded w-fit uppercase">
                     {ebook.badge}
                   </span>
-                  <div className="space-y-1">
+                  <div className="space-y-1 text-left">
                     <p className="text-xs font-black text-white leading-tight">{ebook.titolo}</p>
                     <p className="text-[8px] text-white/50 font-mono">by Alessandro</p>
                   </div>
@@ -1114,14 +1126,12 @@ export default function Home() {
 
                   <a 
                     href={ebook.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-center bg-gray-950 border border-gray-900 hover:border-[#FF6B00]/40 hover:text-white text-gray-400 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="lemonsqueezy-button w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-center bg-gray-950 border border-gray-900 hover:border-[#FF6B00]/40 hover:text-white text-gray-400 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
-                    Scarica Gratis su Lemon Squeezy
+                    {ebook.prezzo === "GRATIS" ? "Scarica Gratis" : `Acquista per ${ebook.prezzo}`}
                   </a>
                 </div>
               </div>
