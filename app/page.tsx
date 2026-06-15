@@ -118,7 +118,7 @@ export default function Home() {
 
   // Stato per il form di contatto
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const FORMSPREE_ID = "IL_TUO_ID_FORMSPREE"; // Inserisci il tuo ID Formspree qui per l'invio in background (es. "xrgovewz")
+  const FORMSPREE_ID: string = "xzdqoejl"; // Inserisci il tuo ID Formspree qui per l'invio in background (es. "xrgovewz")
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
