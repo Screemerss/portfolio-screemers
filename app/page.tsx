@@ -87,6 +87,30 @@ const progetti = [
   },
 ];
 
+// Dati degli Ebook gratuiti da Lemon Squeezy
+const ebooks = [
+  {
+    id: 1,
+    titolo: "Dominare la Produttività con l'IA",
+    descrizione: "Una guida pratica con oltre 50 prompt pronti all'uso per Gemini e ChatGPT. Impara ad automatizzare la scrittura di email, report e brainstorming d'idee.",
+    prezzo: "GRATIS",
+    coverColor: "from-violet-600 to-indigo-900",
+    badge: "GUIDA AI",
+    link: "https://screemerss.lemonsqueezy.com/", // Sostituisci con il link reale del checkout a 0$
+    features: ["+50 Prompt Copia-Incolla", "Formati PDF & EPUB", "Aggiornamenti gratuiti"]
+  },
+  {
+    id: 2,
+    titolo: "Guida all'Automazione per Sviluppatori",
+    descrizione: "Come creare script di automazione desktop per risparmiare ore di lavoro quotidiano (gestione file, scraper web e utility di sistema).",
+    prezzo: "GRATIS",
+    coverColor: "from-orange-500 to-amber-700",
+    badge: "CODING",
+    link: "https://screemerss.lemonsqueezy.com/", // Sostituisci con il link reale del checkout a 0$
+    features: ["Codici Sorgente Inclusi", "Scritta in Python & Shell", "Esempi reali passo-passo"]
+  }
+];
+
 // Dati dei Piatti per il Simulatore di Menu
 const menuSimulatorDishes = [
   { id: "d1", name: "Pizza Margherita", price: 7.50, desc: "Pomodoro, mozzarella fiordilatte, basilico fresco, olio EVO.", category: "pizze", allergens: ["glutine", "lattosio"] },
@@ -1024,6 +1048,84 @@ export default function Home() {
                 Iscriviti e Guarda i Video
               </a>
             </div>
+          </div>
+        </section>
+
+        {/* 6.5 SEZIONE EBOOK & RISORSE */}
+        <section id="risorse" className="py-16 border-t border-gray-900 scroll-mt-24">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#FF6B00] bg-[#FF6B00]/10 px-3 py-1 rounded-md">
+              Risorse Gratuite
+            </span>
+            <h3 className="text-3xl md:text-5xl font-black mt-4 mb-6 text-white">
+              Ebook & Guide Pratiche
+            </h3>
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+              Scarica gratuitamente le mie guide digitali su Lemon Squeezy per ottimizzare la tua produttività personale con l'IA o imparare a scrivere i tuoi primi script di automazione.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {ebooks.map((ebook) => (
+              <div 
+                key={ebook.id} 
+                className="glass-panel rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:items-stretch gap-6 border border-gray-900 hover:border-[#FF6B00]/30 transition-all duration-300"
+              >
+                {/* Copertina Libro 3D-like in CSS */}
+                <div className={`w-36 h-48 rounded-lg bg-gradient-to-br ${ebook.coverColor} p-4 flex flex-col justify-between shadow-xl shrink-0 relative overflow-hidden group select-none border border-white/10`}>
+                  <div className="absolute top-0 left-0 w-2 h-full bg-black/25 z-10"></div>
+                  <span className="text-[8px] font-mono font-bold tracking-widest bg-white/20 text-white px-2 py-0.5 rounded w-fit uppercase">
+                    {ebook.badge}
+                  </span>
+                  <div className="space-y-1">
+                    <p className="text-xs font-black text-white leading-tight">{ebook.titolo}</p>
+                    <p className="text-[8px] text-white/50 font-mono">by Alessandro</p>
+                  </div>
+                  <div className="flex justify-between items-end">
+                    <span className="text-[9px] font-bold text-white/30">SCREEMERS</span>
+                    <span className="text-xs font-black text-[#00D4FF] bg-black/30 px-2 py-0.5 rounded">
+                      {ebook.prezzo}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Dettagli Ebook */}
+                <div className="flex-1 flex flex-col justify-between space-y-4 text-left">
+                  <div>
+                    <h4 className="text-lg font-bold text-white leading-tight mb-2">
+                      {ebook.titolo}
+                    </h4>
+                    <p className="text-xs text-gray-400 leading-normal mb-4">
+                      {ebook.descrizione}
+                    </p>
+                    
+                    {/* Lista Caratteristiche */}
+                    <div className="space-y-1.5 text-xs text-gray-300">
+                      {ebook.features.map((feat, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <svg className="w-3.5 h-3.5 text-[#00D4FF] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <a 
+                    href={ebook.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-center bg-gray-950 border border-gray-900 hover:border-[#FF6B00]/40 hover:text-white text-gray-400 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Scarica Gratis su Lemon Squeezy
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
