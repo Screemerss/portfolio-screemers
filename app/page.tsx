@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Script from "next/script";
+import VisitsCounter from "@/components/VisitsCounter";
 
 // Progetti reali mappati direttamente dai repository GitHub
 const progetti = [
@@ -1297,7 +1298,11 @@ export default function Home() {
       {/* 8. FOOTER */}
       <footer className="border-t border-gray-900 bg-[#02040a] py-10 text-center text-[10px] font-mono text-gray-600">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} Screemers Software. Tutti i diritti riservati.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2">
+            <p>© {new Date().getFullYear()} Screemers Software. Tutti i diritti riservati.</p>
+            <span className="hidden sm:inline text-gray-800">|</span>
+            <VisitsCounter id="homepage" />
+          </div>
           <div className="flex gap-4">
             <a href="https://github.com/Screemerss" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
             <a href="https://www.youtube.com/@Produttivit%C3%A0AI-w2n" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors">YouTube</a>

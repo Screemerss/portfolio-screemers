@@ -1,3 +1,5 @@
+import VisitsCounter from '@/components/VisitsCounter';
+
 export default function Footer() {
   return (
     <footer className="footer-container">
@@ -51,7 +53,11 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="wrapper footer-bottom-wrapper">
           <p>&copy; 2026 TWINS SPORT VILLAGE. Tutti i diritti riservati. P.IVA 01234567890</p>
-          <p>Founder: Antonino Servillo | Demo premium Next.js</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <p>Founder: Antonino Servillo | Demo premium Next.js</p>
+            <span style={{ opacity: 0.3 }}>|</span>
+            <VisitsCounter id="twins" />
+          </div>
         </div>
       </div>
     </footer>
