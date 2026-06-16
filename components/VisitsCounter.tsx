@@ -14,8 +14,8 @@ export default function VisitsCounter({ id }: VisitsCounterProps) {
     fetch(`https://api.counterapi.dev/v1/screemers-portfolio/${id}/up`)
       .then((res) => res.json())
       .then((data) => {
-        if (data && typeof data.value === 'number') {
-          setVisits(data.value);
+        if (data && typeof data.count === 'number') {
+          setVisits(data.count);
         }
       })
       .catch((err) => console.error('Error fetching counter:', err));
