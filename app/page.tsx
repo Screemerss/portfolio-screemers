@@ -86,6 +86,15 @@ const progetti = [
     categoria: "web",
     tags: ["Next.js", "React", "Tailwind CSS", "API routes"]
   },
+  { 
+    id: 10, 
+    titolo: "Twins Sport Village", 
+    descrizione: "Landing page demo premium per un centro sportivo polifunzionale. Tennis, Padel, Calcio, Mappe dark interattive e prenotazione via Sportclubby.", 
+    img: "/twins-assets/hero_bg.jpg", 
+    link: "/twins-sport-village",
+    categoria: "web",
+    tags: ["Next.js", "Vanilla CSS", "React", "Leaflet Map"]
+  },
 ];
 
 // Dati degli Ebook gratuiti da Lemon Squeezy
