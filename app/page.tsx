@@ -96,6 +96,15 @@ const progetti = [
     categoria: "web",
     tags: ["Next.js", "Vanilla CSS", "React", "Leaflet Map"]
   },
+  { 
+    id: 11, 
+    titolo: "AI-Desktop-Agent", 
+    descrizione: "Agente AI locale per l'automazione del desktop. Monitora il Desktop, organizza file tramite Ollama, gestisce setup e automatizza la creazione di documenti Word.", 
+    img: "/projects/11.png", 
+    link: "https://github.com/Screemerss/AI-Desktop-Agent",
+    categoria: "desktop",
+    tags: ["Python", "Ollama", "AI Agent", "Desktop Automation", "Watchdog"]
+  },
 ];
 
 // Dati degli Ebook gratuiti da Lemon Squeezy
