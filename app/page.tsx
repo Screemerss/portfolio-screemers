@@ -296,7 +296,7 @@ export default function Home() {
             {/* Logo Contenitore */}
             <div className="w-12 h-12 overflow-hidden rounded-full bg-[#0b0f19] border border-gray-800 flex items-center justify-center p-1 shadow-[0_0_15px_rgba(138,43,226,0.15)] transition-transform hover:scale-105 duration-300">
               <img 
-                src="/logo.png" 
+                src="/logo_new.png" 
                 alt="Screemers Logo" 
                 className="w-full h-full object-contain rounded-full"
                 onError={(e) => {
