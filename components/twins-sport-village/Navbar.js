@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -78,6 +79,15 @@ export default function Navbar() {
         
         <nav className={`nav-menu ${mobileMenuOpen ? 'open' : ''}`} id="nav-menu">
           <ul>
+            <li>
+              <Link 
+                href="/" 
+                className="nav-link"
+                style={{ color: 'var(--color-secondary)', display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: '600' }}
+              >
+                <i className="fa-solid fa-arrow-left"></i> Torna al Portfolio
+              </Link>
+            </li>
             <li>
               <a 
                 href="#hero" 
