@@ -101,7 +101,7 @@ export async function POST(req: Request) {
           parts: [{ text: SYSTEM_PROMPT }],
         },
         generationConfig: {
-          maxOutputTokens: 300,
+          maxOutputTokens: 4096,
           temperature: 0.7,
         },
       }),
