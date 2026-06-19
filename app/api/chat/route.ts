@@ -88,8 +88,8 @@ export async function POST(req: Request) {
       parts: [{ text: msg.content }],
     }));
 
-    // Chiamata all'endpoint ufficiale di Google Gemini (Gemini 1.5 Flash)
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    // Chiamata all'endpoint ufficiale di Google Gemini (Gemini 2.5 Flash)
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
