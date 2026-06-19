@@ -38,50 +38,43 @@
 /* ==========================================================================
    RESET & BASE STYLES
    ========================================================================== */
-* {
+.twins-body * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
-
-body {
+.twins-body {
     background-color: var(--color-bg-darker);
     color: var(--color-text-main);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+.twins-body h1, .twins-body h2, .twins-body h3, .twins-body h4, .twins-body h5, .twins-body h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     color: #fff;
     line-height: 1.2;
 }
 
-a {
+.twins-body a {
     color: inherit;
     text-decoration: none;
     transition: var(--transition-quick);
 }
 
-img {
+.twins-body img {
     max-width: 100%;
     height: auto;
-    display: block;
 }
 
-ul {
+.twins-body ul {
     list-style: none;
 }
 
-section {
+.twins-body section {
     /* Setup scroll margins for sticky header offset */
     scroll-margin-top: 90px;
 }

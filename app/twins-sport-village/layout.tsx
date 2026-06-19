@@ -31,7 +31,7 @@ export default function TwinsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`${outfit.variable} ${montserrat.variable} ${inter.variable} scroll-smooth`}>
+    <div className={`twins-body ${outfit.variable} ${montserrat.variable} ${inter.variable} scroll-smooth`}>
       <link 
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
